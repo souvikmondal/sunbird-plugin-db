@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="sunbird-plugin-db"
+    version="0.0.1">
+    <name>A native db plugin for Sunbird</name>
+    <description></description>
+    <license>MIT</license>
+    <keywords></keywords>
+
+    <framework src="build-extras.gradle" custom="true" type="gradleReference"/>
+
+    <js-module src="www/plugin.js" name="DB">
+        <clobbers target="db" />
+    </js-module>
+    
+    <!-- android -->
+    <platform name="android">
+
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="db">
+          <param name="android-package" value="org.sunbird.db.SunbirdDBPlugin" />
+          <param name="onload" value="true" />
+        </feature>
+      </config-file>
+
+      <source-file src="src/android/org/sunbird/db/SQLiteOperator.java" target-dir="src/org/sunbird/db" />
+      <source-file src="src/android/org/sunbird/db/Migration.java" target-dir="src/org/sunbird/db" />
+      <source-file src="src/android/org/sunbird/db/SunbirdDBContext.java" target-dir="src/org/sunbird/db" />
+      <source-file src="src/android/org/sunbird/db/SunbirdDBHelper.java" target-dir="src/org/sunbird/db" />
+      <source-file src="src/android/org/sunbird/db/SunbirdDBPlugin.java" target-dir="src/org/sunbird/db" />
+
+    </platform>
+
+    <platform name="browser">
+        <config-file target="config.xml" parent="/*">
+            <feature name="DB">
+                <param name="browser-package" value="DB" />
+            </feature>
+        </config-file>
+        <js-module src="src/browser/DBProxy.js" name="DBProxy">
+            <runs/>
+        </js-module>
+    </platform>
+</plugin>

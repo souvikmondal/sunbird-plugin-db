@@ -1,0 +1,15 @@
+{
+  "name": "sunbird-plugin-db",
+  "version": "0.0.1",
+  "cordova": {
+    "id": "sunbird-plugin-db",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {
+    "sqlite3": "^4.0.4"
+  },
+  "description": "A native db plugin for sunbird"
+}
